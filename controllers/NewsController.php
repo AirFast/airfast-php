@@ -14,12 +14,25 @@ class NewsController {
 
 	public function actionOne() {
 
-		$id   = $_GET['id'];
+		if (isset( $_GET['id'] )) {
+			$id   = $_GET['id'];
+		} else {
+			$this->actionAll();
+			return;
+		}
+
 		$item = NewsModel::findOneById( $id );
 		$view = new View();
 
 		$view->item = $item;
 		$view->display( 'news/one.php' );
+
+	}
+
+	public function actionInsert() {
+
+		$article = new NewsModel();
+		$article;
 
 	}
 
