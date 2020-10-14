@@ -13,7 +13,9 @@ class DB {
 	}
 
 	public function setClassName( $className = 'stdClass' ) {
+
 		self::$className = $className;
+
 	}
 
 	public function query( $sql, $params = [] ) {
