@@ -6,9 +6,15 @@ class View implements Iterator {
 
 	protected $data = [];
 
-	public function __set( $key, $val ) {
+	public function __set( $k, $v ) {
 
-		$this->data[ $key ] = $val;
+		$this->data[ $k ] = $v;
+
+	}
+
+	public function __get( $k ) {
+
+		return $this->data[ $k ];
 
 	}
 
@@ -67,4 +73,5 @@ class View implements Iterator {
 		reset( $this->data );
 
 	}
+
 }
