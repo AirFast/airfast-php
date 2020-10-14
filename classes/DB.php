@@ -2,9 +2,6 @@
 
 class DB {
 
-	/**
-	 * @var PDO
-	 */
 	private static $db;
 	private static $className;
 
