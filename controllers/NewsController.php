@@ -4,10 +4,7 @@ class NewsController {
 
 	public function actionAll() {
 
-		$items = NewsModel::findOneById(1);
-		var_dump($items);
-		die();
-
+		$items = NewsModel::findAll();
 		$view  = new View();
 
 		$view->items = $items;
@@ -18,7 +15,7 @@ class NewsController {
 	public function actionOne() {
 
 		$id   = $_GET['id'];
-		$item = NewsModel::getOne( $id );
+		$item = NewsModel::findOneById( $id );
 		$view = new View();
 
 		$view->item = $item;

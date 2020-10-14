@@ -6,7 +6,7 @@ abstract class AbstractModel {
 
 	public static function findAll() {
 
-		$db = new DB( get_called_class() );
+		$db  = new DB( get_called_class() );
 		$sql = 'SELECT * FROM ' . static::$table;
 
 		return $db->query( $sql );
@@ -18,7 +18,7 @@ abstract class AbstractModel {
 		$db  = new DB( get_called_class() );
 		$sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
 
-		return $db->query( $sql, [ ':id' => $id ] );
+		return $db->query( $sql, [ ':id' => $id ] )[0];
 
 	}
 
