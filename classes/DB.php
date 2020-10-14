@@ -2,6 +2,9 @@
 
 class DB {
 
+	/**
+	 * @var PDO
+	 */
 	private static $db;
 	private static $className;
 
@@ -9,7 +12,9 @@ class DB {
 
 		require_once __DIR__ . '/../config/config.php';
 
-		/** @var array $config */
+		/**
+		 * @var array $config
+		 */
 		self::$db = new PDO( 'mysql:dbname=' . $config['db']['database'] . ';host=' . $config['db']['host'], $config['db']['user'], $config['db']['password'] );
 
 	}
