@@ -1,2 +1,1 @@
-# airfast-php
 PHP OOP
