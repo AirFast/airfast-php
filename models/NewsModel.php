@@ -1,6 +1,6 @@
 <?php
 
-class News extends AbstractModel {
+class NewsModel extends AbstractModel {
 
 	protected static $table = 'news';
 	protected static $class = 'News';

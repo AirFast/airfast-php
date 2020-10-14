@@ -20,34 +20,4 @@ class DB {
 
 	}
 
-	public function execute( $sql ) {
-
-		mysqli_query( self::$db, $sql );
-
-	}
-
-	public function queryAll( $sql, $class = 'stdClass' ) {
-
-		$res = mysqli_query( self::$db, $sql );
-
-		if ( false === $res ) {
-			return false;
-		}
-
-		$ret = [];
-
-		while ( $row = mysqli_fetch_object( $res, $class ) ) {
-			$ret[] = $row;
-		}
-
-		return $ret;
-
-	}
-
-	public function queryOne( $sql, $class = 'stdClass' ) {
-
-		return $this->queryAll( $sql, $class )[0];
-
-	}
-
 }
