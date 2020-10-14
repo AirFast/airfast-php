@@ -1,44 +1,24 @@
 <?php
 
-
-class AbstractModel {
+abstract class AbstractModel {
 
 	protected static $table;
-	protected static $class;
 
 	public static function findAll() {
 
-		$db = new DB();
+		$db = new DB( get_called_class() );
 		$sql = 'SELECT * FROM ' . static::$table;
 
 		return $db->query( $sql );
 
 	}
 
-	public static function findOne() {
+	public static function findOneById( $id ) {
 
-		$db = new DB();
-		$sql = 'SELECT * FROM ' . static::$table;
+		$db  = new DB( get_called_class() );
+		$sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
 
-		return $db->query( $sql );
-
-	}
-
-	public static function getAll() {
-
-		$db = new DB();
-		$sql = 'SELECT * FROM ' . static::$table;
-
-		return $db->queryAll( $sql, static::$class );
-
-	}
-
-	public static function getOne( $id ) {
-
-		$db = new DB();
-		$sql = 'SELECT * FROM ' . static::$table . ' WHERE id=' . $id;
-
-		return $db->queryOne( $sql, static::$class );
+		return $db->query( $sql, [ ':id' => $id ] );
 
 	}
 

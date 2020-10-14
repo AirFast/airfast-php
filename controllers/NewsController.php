@@ -4,7 +4,7 @@ class NewsController {
 
 	public function actionAll() {
 
-		$items = NewsModel::findAll();
+		$items = NewsModel::findOneById(1);
 		var_dump($items);
 		die();
 
