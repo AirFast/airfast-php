@@ -8,6 +8,8 @@ class DB {
 	public function __construct() {
 
 		require_once __DIR__ . '/../config/config.php';
+
+		/** @var array $config */
 		self::$db = new PDO( 'mysql:dbname=' . $config['db']['database'] . ';host=' . $config['db']['host'], $config['db']['user'], $config['db']['password'] );
 
 	}
