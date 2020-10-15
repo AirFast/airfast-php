@@ -56,4 +56,25 @@ abstract class AbstractModel {
 
 	}
 
+	public function update() {
+
+		$keys = array_keys( $this->data );
+		$cols = [];
+		$data = [];
+
+		foreach ( $keys as $key ) {
+			$cols[] = $key . '=:' . $key;
+			$data[ ':' . $key ] = $this->data[ $key ];
+		}
+
+		$lastItem = array_pop($cols );
+
+		$sql = 'UPDATE ' . static::$table . ' SET ' . implode( ', ', $cols ) . ' WHERE ' . $lastItem;
+
+		$db = new DB();
+
+		$db->execute( $sql, $data );
+
+	}
+
 }

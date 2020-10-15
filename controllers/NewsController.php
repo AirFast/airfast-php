@@ -8,7 +8,7 @@ class NewsController {
 		$view  = new View();
 
 		$view->items = $items;
-		$view->display( 'news/all.php' );
+		$view->display( 'news/index.php' );
 
 	}
 
