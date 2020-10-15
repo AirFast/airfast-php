@@ -19,11 +19,11 @@ class Router {
 
 	public function route() {
 
-		$controllerName = isset( $this->urlPath[0] ) ? ucfirst( $this->urlPath[0] ) : $this->defaultControllerName;
-		$action = isset( $this->urlPath[1] ) ? ucfirst( $this->urlPath[1] ) : $this->defaultActionName;
+		$controllerName = ! empty( $this->urlPath[0] ) ? ucfirst( $this->urlPath[0] ) : $this->defaultControllerName;
+		$action         = ! empty( $this->urlPath[1] ) ? ucfirst( $this->urlPath[1] ) : $this->defaultActionName;
 
 		$controllerClassName = $controllerName . 'Controller';
-		$actionName = 'action' . $action;
+		$actionName          = 'action' . $action;
 
 		$controller = new $controllerClassName();
 

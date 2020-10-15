@@ -14,6 +14,10 @@ class AdminController {
 
 	public function actionAdd() {
 
+		$view  = new View();
+
+		$view->display( 'admin/add.php' );
+
 	}
 
 	public function actionEdit() {
@@ -37,8 +41,12 @@ class AdminController {
 	public function actionInsert() {
 
 		$article = new NewsModel();
-		$article;
 
+		$article->title = $_POST['title'];
+		$article->text  = $_POST['text'];
+
+		$article->insert();
+		header( 'Location: /admin' );
 	}
 
 	public function actionUpdate() {
@@ -59,6 +67,24 @@ class AdminController {
 
 		$article->update();
 		header( 'Location: /admin/edit?id=' . $id );
+
+	}
+
+	public function actionDelete() {
+
+		if ( isset( $_GET['id'] ) ) {
+			$id = $_GET['id'];
+		} else {
+			header( 'Location: /admin' );
+
+			return;
+		}
+
+		$article = new NewsModel();
+
+		$article->delete( $id );
+
+		header( 'Location: /admin' );
 
 	}
 

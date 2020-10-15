@@ -20,7 +20,7 @@ abstract class AbstractModel {
 	public static function findAll() {
 
 		$db  = new DB();
-		$sql = 'SELECT * FROM ' . static::$table;
+		$sql = 'SELECT * FROM ' . static::$table . ' ORDER BY post_date DESC';
 
 		$db->setClassName( get_called_class() );
 
@@ -52,7 +52,7 @@ abstract class AbstractModel {
 
 		$db = new DB();
 
-		$db->execute( $sql, $data );
+		return $db->execute( $sql, $data );
 
 	}
 
@@ -73,7 +73,17 @@ abstract class AbstractModel {
 
 		$db = new DB();
 
-		$db->execute( $sql, $data );
+		return $db->execute( $sql, $data );
+
+	}
+
+	public function delete( $id ) {
+
+		$sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
+
+		$db = new DB();
+
+		return $db->execute( $sql, [ ':id' => $id ] );
 
 	}
 
