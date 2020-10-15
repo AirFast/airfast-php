@@ -2,7 +2,7 @@
 
 class NewsController {
 
-	public function actionAll() {
+	public function actionIndex() {
 
 		$items = NewsModel::findAll();
 		$view  = new View();
