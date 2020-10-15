@@ -8,3 +8,5 @@ $config = [
 		'database' => 'php_test'
 	],
 ];
+
+return $config;
